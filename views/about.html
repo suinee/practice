@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="back">
+        <button onclick="goBack()" style="color:white; background-color:rgb(190, 155, 247); float:left;">back</button>
+    </div>
+    <div style="clear:both;"></div> 
+    <span>휴학생이 웃는 방법은 ? <br></span>
+    <button onclick="show()">answer</button>
+    
+    <div id="answer" style="display:none;">
+        <span>휴하하하하학ㄱ학</span>
+        <div style="clear:both;"></div> 
+        <img src="img/aboutpage.png" width="400px" alt="">
+    </div>
+</body>
+<script>
+    function goBack(){
+        window.history.back();
+    }
+
+    function show(){
+        const text =document.getElementById("answer") 
+        if(text.style.display=='none'){
+            text.style.display='block';
+        }else{
+            text.style.display='none';
+        }
+    }
+</script>
+</html>

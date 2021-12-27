@@ -1,0 +1,76 @@
+<!-- views/partials/nav.ejs -->
+<nav class="navbar sticky-top navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+    <img src="/img/icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    <span class="navbar-brand mb-0 h1">Suin's website</span>
+  </a>
+  <span class="navbar-text " id="time"></span>
+</nav>
+<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
+  <div class="container">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="/contacts" class="nav-link">Index</a></li>
+        <li class="nav-item"><a href="/contacts/new" class="nav-link">New</a></li>
+        <li class="nav-item"><a href="/posts" class="nav-link">board</a></li>
+        <li class="nav-item"><a href="/users" class="nav-link">User</a></li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <% if(isAuthenticated){ %>
+          <li class="nav-item"><a href="/users/<%= currentUser.username %>" class="nav-link">My Account</a></li>
+          <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+        <% } else { %>
+          <li class="nav-item"><a href="/users/new" class="nav-link">Sign Up</a></li>
+          <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+        <% } %>
+      </ul>
+    </div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item d-flex">
+        <div class="collapse" id="searchForm">
+          <input id="search" type="search" class="form-control mr-sm-2 btn-sm" placeholder="검색하숑" aria-label="Search"/>
+        </div>
+        <a class="nav-link ml-auto" href="#searchForm" data-target="#searchForm" data-toggle="collapse">
+          <i class="mdi mdi-magnify"></i>
+        </a>
+    
+      </li>
+    </ul>
+  </div>
+</nav>
+    
+<script>    
+  function movepage(){
+    location.href="/";
+  }
+
+  const clockTarget = document.getElementById("time");
+    
+  function time() {
+    const date = new Date();
+    const month = date.getMonth();
+    const clockDate = date.getDate();
+    const day = date.getDay();
+    const week = ['일', '월', '화', '수', '목', '금', '토'];  
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    clockTarget.innerText = `${month+1}월 ${clockDate}일 ${week[day]}요일` +
+         `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }:${seconds < 10 ? `0${seconds }`  : seconds }`;
+  }
+
+  function init() {
+    time();
+    setInterval(time, 1000); //1000 = 1초 
+
+  }
+
+  init();
+
+</script>

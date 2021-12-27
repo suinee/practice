@@ -1,0 +1,33 @@
+/* public/css/master.css */
+
+.contact .contact-form,
+.contact-index ul{
+  max-width: 500px;
+}
+.contact h2{
+  color: tomato;
+}
+.contact .contact-form label,
+.contact-show label{
+  display: inline-block;
+  width: 70px;
+}
+.contact .contact-menu form{
+  display: inline-block;
+}
+
+.user-form {
+  width: 400px;
+}
+
+.board-table{
+  table-layout: fixed;
+}
+.contact-table{
+  table-layout: fixed;
+}
+
+.body-table .author,
+.body-table .date{
+  width: 100px;
+}

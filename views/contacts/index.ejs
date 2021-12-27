@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
+
+      <h2 class="mb-3">Index</h2>
+
+    <table class="contact-table table table-sm border-bottom">
+
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if(contacts == null || contacts.length == 0){ %>
+          <tr>
+            <td colspan=2> 보여줄게 없쪙 ㅠ </td>
+          </tr>
+        <% } %>
+        <% contacts.forEach(function(contact) { %>
+          <tr>
+            <td>
+              <a href="/contacts/<%= contact._id %>"><div class="ellipsis"><%= contact.name %></div></a>
+            </td>
+            <td class="phone">
+              <div class="ellipsis"><%= contact.phone %></div>
+            </td>
+            
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <div>
+      <a class="btn btn-primary" href="/contacts/new">New</a>
+    </div>
+
+</div>
+  </body>
+</html>
